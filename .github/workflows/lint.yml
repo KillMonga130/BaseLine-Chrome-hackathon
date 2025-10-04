@@ -1,0 +1,22 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Run CSS linter
+        run: node tools/lint-css.js example/styles.css
+      - name: Run ESLint (baseline plugin)
+        run: |
+          # Link the local plugin so ESLint can load it
+          npm install --no-audit --no-fund
+          npx eslint -c .eslintrc-baseline.json example/styles.css || true
