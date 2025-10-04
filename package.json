@@ -1,0 +1,26 @@
+{
+  "name": "baseline-tooling-starter",
+  "version": "0.1.0",
+  "description": "Starter scaffold for the Baseline Tooling Hackathon: small CLI + submission materials",
+  "main": "src/index.js",
+  "bin": {
+    "baseline": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "demo": "node src/demo.js",
+    "test": "node test/run.js",
+    "lint-css": "node tools/lint-css.js example/styles.css"
+  },
+  "keywords": [
+    "baseline",
+    "web-features",
+    "hackathon",
+    "eslint",
+    "tooling"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "web-features": "^1.4.0"
+  }
+}
