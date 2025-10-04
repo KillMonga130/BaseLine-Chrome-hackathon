@@ -24,3 +24,24 @@ npm install
 ```
 
 Next steps: implement your integration (ESLint plugin, VS Code extension, CI check, etc.), record a >3-minute demo video, publish your repo, choose a permissive OSS license, and submit on Devpost with the materials in `SUBMISSION.md`.
+
+Evidence & how to run the full demo
+----------------------------------
+
+The repo includes an ESLint plugin, a prefetch script for the Web Platform Dashboard cache, and a small demo/test harness.
+
+Run these locally (PowerShell):
+
+```powershell
+cd "C:\Users\mubva\Downloads\BaseLine Chrome hackathons"
+npm install
+# Build the webstatus cache used by CI (creates data/webstatus-cache.json)
+node tools/prefetch-webstatus.js
+# Run the demo and smoke test
+npm run demo
+npm test
+# Run ESLint with baseline plugin
+npx eslint -c .eslintrc-baseline.cjs example/styles.js -f stylish
+```
+
+The CI workflow uses a similar flow in `.github/workflows/lint.yml` to prefetch and run the rules in a reproducible way.

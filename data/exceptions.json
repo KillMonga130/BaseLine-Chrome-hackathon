@@ -1,0 +1,6 @@
+{
+  "css.properties.word-break.auto-phrase": {
+    "reason": "Not Baseline: auto-phrase value is not supported broadly across engines",
+    "source": "https://developer.mozilla.org/ (example)"
+  }
+}

@@ -9,6 +9,12 @@ What it does (summary):
 - Provides examples and adapters: ESLint rule to warn when unsupported features are used; VS Code hover hints showing baseline status; CI script that fails builds when using unstable features.
 - Demo includes a simple CLI and offline sample data to show the flow.
 
+Why this is innovative:
+- Combines value-level Baseline checks with editor and CI integrations to provide a single, reproducible signal developers can act on. Unlike tools that only check feature presence, our approach warns on specific property/value pairs and uses curated exceptions and an offline Web Platform Dashboard cache to stay deterministic in CI.
+
+Why this is useful:
+- Integrates with workflows developers already use (ESLint, VS Code, GitHub Actions). It prevents accidental use of unstable values early (editor/linter) and enforces policy in CI without relying on runtime network calls. The plugin is lightweight and pluggable so teams can adopt incrementally.
+
 Technologies used:
 - Node.js, npm
 - web-features (Baseline data)
@@ -41,3 +47,9 @@ Submission checklist (Devpost questions):
 - License: MIT included
 - Demo video: upload and link
 - Answered all questions: yes
+
+Evidence & links:
+- Deterministic value-level checks: `eslint-plugin-baseline/lib/rules/use-baseline.js` implements exceptions → computeBaseline (optional) → web-features → webstatus-cache → heuristics fallback.
+- Offline CI compatibility: `.github/workflows/lint.yml` prefetches `data/webstatus-cache.json` to avoid network IO during checks.
+- Reproducible demo & tests: `src/demo.js`, `test/run.js`, and `test/lint-rule-test.js` demonstrate the end-to-end flow locally.
+- License & submission materials: `LICENSE` (MIT), `README.md`, `SUBMISSION.md`.

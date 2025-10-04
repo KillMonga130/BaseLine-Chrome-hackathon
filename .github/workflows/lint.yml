@@ -13,10 +13,12 @@ jobs:
           node-version: '18'
       - name: Install dependencies
         run: npm install
+      - name: Prefetch Webstatus cache
+        run: node tools/prefetch-webstatus.js
       - name: Run CSS linter
         run: node tools/lint-css.js example/styles.css
       - name: Run ESLint (baseline plugin)
+        env:
+          BASELINE_ALLOW_NETWORK: 'false'
         run: |
-          # Link the local plugin so ESLint can load it
-          npm install --no-audit --no-fund
-          npx eslint -c .eslintrc-baseline.json example/styles.css || true
+          npx eslint -c .eslintrc-baseline.cjs example/styles.css || true
