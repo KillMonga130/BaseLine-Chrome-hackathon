@@ -3,29 +3,130 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Baseline Tooling — Live Demo</title>
+  <title>Baseline Tooling — Interactive Demo</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/github.min.css" />
 </head>
 <body>
-  <main>
-    <h1>Baseline Tooling — Demo</h1>
-    <p>This static demo uses a tiny sample of the Web Platform Dashboard cache and curated exceptions to show how the ESLint plugin would flag non-Baseline CSS values.</p>
+  <header>
+    <h1>🎯 Baseline Tooling — Interactive Demo</h1>
+    <p>Real-time demonstration of Baseline integration with developer tools</p>
+  </header>
 
-    <section>
-      <h2>Example CSS</h2>
-      <textarea id="cssInput" rows="6">.foo {\n  word-break: auto-phrase;\n  display: grid;\n}</textarea>
-      <div><button id="run">Run Baseline Check</button></div>
-    </section>
+  <div class="demo-container">
+    <div class="editor-panel">
+      <div class="panel-header">
+        <h2>📝 CSS Editor</h2>
+        <div class="controls">
+          <button id="loadExample1" class="btn-small">Non-Baseline Example</button>
+          <button id="loadExample2" class="btn-small">Mixed Example</button>
+          <button id="clearEditor" class="btn-small">Clear</button>
+        </div>
+      </div>
+      <textarea id="cssEditor" rows="15">.modern-layout {
+  /* This will trigger a Baseline warning */
+  word-break: auto-phrase;
+  
+  /* These are Baseline features */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  
+  /* Try adding more CSS properties... */
+}</textarea>
+    </div>
 
-    <section>
-      <h2>Results</h2>
-      <pre id="results">(no results yet)</pre>
-    </section>
+    <div class="results-panel">
+      <div class="panel-header">
+        <h2>🔍 Live Analysis</h2>
+        <div class="status" id="status">Ready</div>
+      </div>
+      
+      <div class="analysis-tabs">
+        <button class="tab-btn active" data-tab="lint">ESLint Results</button>
+        <button class="tab-btn" data-tab="sources">Data Sources</button>
+        <button class="tab-btn" data-tab="workflow">CI Workflow</button>
+      </div>
 
-    <footer>
-      <p>To publish this demo: push the repo to GitHub and enable Pages for the `docs/` folder or run <code>npm run deploy</code> (see README).</p>
-    </footer>
-  </main>
+      <div class="tab-content active" id="lint-tab">
+        <div id="lintResults" class="results-area">
+          <div class="placeholder">Start typing CSS to see real-time Baseline analysis...</div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="sources-tab">
+        <div class="data-sources">
+          <div class="source-item">
+            <h3>🎯 Curated Exceptions</h3>
+            <div class="source-status loaded">Loaded</div>
+            <div class="source-details">Custom rules for known non-Baseline values</div>
+          </div>
+          <div class="source-item">
+            <h3>📦 web-features Package</h3>
+            <div class="source-status loaded">Loaded</div>
+            <div class="source-details">Local Baseline feature data</div>
+          </div>
+          <div class="source-item">
+            <h3>🌐 Web Platform Dashboard</h3>
+            <div class="source-status cached">Cached</div>
+            <div class="source-details">Prefetched API data for offline use</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="workflow-tab">
+        <div class="workflow-demo">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Developer writes CSS</h3>
+              <p>Uses modern features like <code>word-break: auto-phrase</code></p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>ESLint Plugin checks Baseline</h3>
+              <p>Consults exceptions → web-features → cached webstatus</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>CI blocks non-Baseline code</h3>
+              <p>Prevents production deployment of unsupported features</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-showcase">
+    <h2>🛠️ What Makes This Innovative</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Value-Level Checking</h3>
+        <p>Unlike tools that only check feature availability, we validate specific CSS property values against Baseline data.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Multi-Source Fallback</h3>
+        <p>Combines curated exceptions, local web-features data, and cached Web Platform Dashboard results for accuracy.</p>
+      </div>
+      <div class="feature-card">
+        <h3>CI-Safe Operation</h3>
+        <p>Prefetch script creates offline cache, enabling deterministic checks without network dependencies.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Developer Workflow Integration</h3>
+        <p>Works with ESLint, VS Code, and GitHub Actions - tools developers already use daily.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
   <script src="demo.js"></script>
 </body>
 </html>
