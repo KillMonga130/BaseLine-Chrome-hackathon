@@ -21,9 +21,9 @@ Technologies used:
 - ESLint (adapter example — suggested)
 - VS Code extension API (adapter idea)
 
-Repository URL: (add your public repo URL here)
+Repository URL: https://github.com/KillMonga130/BaseLine-Chrome-hackathon
 
-Hosted URL: (optional — add live demo link if hosted)
+Hosted URL: https://killmonga130.github.io/BaseLine-Chrome-hackathon/
 
 License: MIT (permissive)
 
@@ -48,8 +48,22 @@ Submission checklist (Devpost questions):
 - Demo video: upload and link
 - Answered all questions: yes
 
+Perfect Devpost Answers:
+
+**Why would most web developers find this useful?**
+Every web developer faces the same frustrating research loop: "Is this CSS feature safe to use in production?" Our tools eliminate this productivity tax by integrating Baseline data directly into ESLint, VS Code, and CI workflows developers already use. Instead of tab-switching between MDN, caniuse.com, and blogs, you get instant, authoritative answers right in your editor and build process.
+
+**What's innovative about your project?**
+Unlike existing tools that only check feature presence, we perform value-level validation (e.g., checking if `word-break: auto-phrase` is supported, not just `word-break`). Our multi-source intelligence system combines curated exceptions, local web-features data, cached Web Platform Dashboard results, and smart heuristics. The offline-first architecture ensures deterministic CI results without network dependencies, making it production-ready for any team.
+
+**Creating new tool or modifying existing?**
+Creating new tools - a cohesive ESLint plugin, VS Code extension, and CI integration system that work together to provide comprehensive Baseline checking across the entire development workflow.
+
+**Project start date:** October 4, 2025
+
 Evidence & links:
-- Deterministic value-level checks: `eslint-plugin-baseline/lib/rules/use-baseline.js` implements exceptions → computeBaseline (optional) → web-features → webstatus-cache → heuristics fallback.
-- Offline CI compatibility: `.github/workflows/lint.yml` prefetches `data/webstatus-cache.json` to avoid network IO during checks.
-- Reproducible demo & tests: `src/demo.js`, `test/run.js`, and `test/lint-rule-test.js` demonstrate the end-to-end flow locally.
-- License & submission materials: `LICENSE` (MIT), `README.md`, `SUBMISSION.md`.
+- Interactive demo: https://killmonga130.github.io/BaseLine-Chrome-hackathon/
+- Value-level checking logic: `eslint-plugin-baseline/lib/rules/use-baseline.js`
+- CI workflow with prefetch: `.github/workflows/lint.yml` 
+- Comprehensive tests: `test/lint-rule-test.js` validates ESLint integration
+- Demo script for video: `DEMO_SCRIPT.md`
