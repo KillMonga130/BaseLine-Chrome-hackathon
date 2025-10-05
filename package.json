@@ -12,7 +12,8 @@
   "test": "node test/run.js",
   "lint-css": "node tools/lint-css.js example/styles.css",
   "test:rule": "node test/lint-rule-test.js",
-  "lint:baseline": "npx eslint -c .eslintrc-baseline.cjs example/styles.js -f stylish"
+    "lint:baseline": "npx eslint -c .eslintrc-baseline.cjs example/styles.js -f stylish",
+    "deploy": "gh-pages -d docs"
   },
   "keywords": [
     "baseline",
@@ -27,5 +28,8 @@
     "eslint-plugin-baseline": "file:eslint-plugin-baseline",
     "node-fetch": "^2.7.0",
     "web-features": "^1.4.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

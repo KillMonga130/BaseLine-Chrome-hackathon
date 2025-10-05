@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Baseline Tooling — Live Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Baseline Tooling — Demo</h1>
+    <p>This static demo uses a tiny sample of the Web Platform Dashboard cache and curated exceptions to show how the ESLint plugin would flag non-Baseline CSS values.</p>
+
+    <section>
+      <h2>Example CSS</h2>
+      <textarea id="cssInput" rows="6">.foo {\n  word-break: auto-phrase;\n  display: grid;\n}</textarea>
+      <div><button id="run">Run Baseline Check</button></div>
+    </section>
+
+    <section>
+      <h2>Results</h2>
+      <pre id="results">(no results yet)</pre>
+    </section>
+
+    <footer>
+      <p>To publish this demo: push the repo to GitHub and enable Pages for the `docs/` folder or run <code>npm run deploy</code> (see README).</p>
+    </footer>
+  </main>
+  <script src="demo.js"></script>
+</body>
+</html>
